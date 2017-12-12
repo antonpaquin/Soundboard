@@ -49,10 +49,11 @@ void gumsound_play(struct gumsound *file, void (*callback)(void *), void *data) 
 void *gumsound_play_thread(void *gumsound_ptr) {
     struct gumsound_thread_args gg;
     char cmd[filename_max_length + 40];
+    printf("Enter play_thread\n");
 
     gg = *(struct gumsound_thread_args *)gumsound_ptr;
 
-    sprintf(cmd, "padsp ./bin/madplay %s", gg.sound->name);
+    sprintf(cmd, "aplay %s", gg.sound->name);
     printf("%s\n", cmd);
 
     system(cmd);

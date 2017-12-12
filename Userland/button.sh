@@ -1,5 +1,4 @@
 PID=$(cat pidfile)
-DEVF=$1
-BTN=$2
-echo $BTN > $DEVF
+BTN=$1
+echo $BTN > button_dev
 kill -SIGUSR1 $PID

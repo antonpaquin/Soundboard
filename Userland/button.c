@@ -20,7 +20,7 @@ void handle_signal(int signum);
 void button_listen_file(char *filename, void (*callback)(int)) {
     FILE *fp;
 
-    if (!init) {
+    if (init != 1) {
         init = 1;
         signal(SIGUSR1, handle_signal);
         fp = fopen("pidfile", "w");
@@ -38,6 +38,7 @@ void handle_signal(int signum) {
     char read_buf[100];
 
     memset(read_buf, 0, 100);
+
 
     fp = fopen(listen_file, "r");
     fgets(read_buf, 100, fp);
